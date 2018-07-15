@@ -1,0 +1,11 @@
+body{
+  color: red;
+}
+
+.meinv {
+  background: url('./img/1.jpg') no-repeat center;
+  background-size: contain;
+  height: 200px;
+  width: 200px;
+  transform: 100px;
+}
