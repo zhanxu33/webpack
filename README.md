@@ -88,24 +88,38 @@ plugins: [
 webpack 4.0使用common-chunk-and-vendor-chunk
 ```
 optimization: {
+  minimize: false,
+  // 提取webpack运行时代码为manifest，如果名字和下面的一样，会打包到一起
+  runtimeChunk: {
+    // 打包到venders里面
+    name: 'js/vendors'
+  },
   splitChunks: {
+    chunks: "async",
+    minSize: 3000, // 最小多少才提取
+    minChunks: 1,
+    // 这个才是关键
     cacheGroups: {
-      commons: {
-        chunks: "initial",  // 从入口开始，提取多个entry里面共有的代码
-        minChunks: 2,
-        maxInitialRequests: 5, // The default limit is too small to showcase the effect
-        minSize: 0 // This is example is too small to create commons chunks
-      },
-      vendor: {   // 提取node_modules里的代码到vender
+      // 提取node_modules中的代码为vender
+      crazyvegetable: {
+        chunks: "initial",  // 从入口开始，提取多个entry里面共有的代码，如果是 all的话，会把所有入口和动态加载的代码都打包进
         test: /node_modules/,
-        chunks: "initial",
-        name: "vendor",
+        name: "js/vendors",
         priority: 10,
         enforce: true
+      },
+      // 提取多个入口的公共代码
+      commons: {
+        name: "js/commons",
+        chunks: "initial",
+        minChunks: 2, // 最少公用数
+        maxInitialRequests: 5, // The default limit is too small to showcase the effect
+        minSize: 0 // This is example is too small to create commons chunks
       }
     }
   }
 }
+
 ```
 ### 3. treeshaking,根据ES6 Module做优化，去掉未使用的代码
 ```
