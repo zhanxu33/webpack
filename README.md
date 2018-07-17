@@ -78,13 +78,17 @@ output: {
 },
 plugins: [
     new CommonsChunkPlugin({
-        name: "jquery",
+        // 第一个是公共代码的地方，如果entry没有则新增一个，有的话就打包到一起，第二个是公共框架、类库这种模块
+        // 最后是一个webpack的runtime
+        name: ["common","jquery","load"],
+        // 最小化打包数，如果是Infinity，则不会吧公共代码打包到第一里面
         minChunks:2,
+        // 指定哪些chunk的公共代码会打包到common里
         chunks:["main","main1"]
     })
 ]
 ```
-上面会把main和main1的公共业务代码打包到jquery里，如果minChunks改为Infinity,则不会将公共代码打包进jquery的chunk里
+上面会把main和main1的公共业务代码打包到common里，如果minChunks改为Infinity,则不会将公共代码打包进jquery的chunk里
 webpack 4.0使用common-chunk-and-vendor-chunk
 ```
 optimization: {

@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "stage-0",
+    "env"
+  ],
+  "plugins": [
+    [
+      "extract",
+      {
+        "library": "lodash"
+      }
+    ],
+    "syntax-decorators"
+  ]
+}
