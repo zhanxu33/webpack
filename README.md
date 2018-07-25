@@ -150,5 +150,5 @@ optimization: {
 
 ### 4.模拟webpack,自己写打包工具
 emm,具体在代码里面，主要是2个对象的理解
-注意： npm link的时候，package.json里面增加bin字段，然后指定执行的js文件，js文件最上面加上>#!/usr/bin/env node
+注意： npm link的时候，package.json里面增加bin字段，然后指定执行的js文件，js文件最上面加上`#!/usr/bin/env node`
   
