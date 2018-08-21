@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "debugger": "node --inspect-brk .\\node_modules\\webpack-cli\\bin"
+    "debugger": "node --inspect-brk .\\node_modules\\webpack-cli\\bin\\cli.js"
   },
   "keywords": [],
   "author": "",
