@@ -12,9 +12,6 @@
     "webpack": "^4.16.1",
     "webpack-cli": "^3.0.8"
   },
-  "devDependencies": {
-    "lodash": "^4.17.10"
-  },
   "scripts": {
     "build": "webpack --mode production"
   },
